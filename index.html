@@ -327,6 +327,147 @@ title: James Bell-Torres
     margin-bottom: 0.35rem;
   }
 
+  .ecm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .ecm-card {
+    min-width: 0;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 8px;
+    background: var(--white);
+    padding: 1.25rem;
+  }
+
+  .ecm-card .preview {
+    display: -webkit-box;
+    min-height: 7.2em;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .ecm-toggle {
+    width: 100%;
+    border-top: 0.5px solid var(--gray-200);
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    padding-top: 0.75rem;
+    color: var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font: 700 0.9rem/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .ecm-full {
+    display: none;
+    margin-top: 0.9rem;
+  }
+
+  .ecm-full.open {
+    display: block;
+  }
+
+  .ecm-card ul {
+    margin-bottom: 0;
+    padding-left: 1.2rem;
+  }
+
+  .ecm-card li + li {
+    margin-top: 0.35rem;
+  }
+
+  .carousel {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .carousel-frame {
+    position: relative;
+    min-height: 520px;
+    display: grid;
+    place-items: center;
+    padding: 1rem 3.5rem;
+    border: 0.5px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .carousel-slide {
+    display: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .carousel-slide.active {
+    display: block;
+  }
+
+  .carousel-slide img {
+    display: block;
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    transform: translateY(-50%);
+    border: 0.5px solid #d4d8dc;
+    border-radius: 50%;
+    color: var(--primary-color);
+    background: var(--white);
+    cursor: pointer;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .carousel-control.previous {
+    left: 0.6rem;
+  }
+
+  .carousel-control.next {
+    right: 0.6rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    padding: 0;
+    border: 1px solid var(--gray-600);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .image-credit {
+    margin-top: 0.75rem;
+    color: var(--gray-600);
+    text-align: right;
+    font-size: 0.85rem;
+  }
+
   .strategy-steps {
     display: grid;
     gap: 0.65rem;
@@ -509,6 +650,26 @@ title: James Bell-Torres
       grid-template-columns: 1fr;
     }
 
+    .ecm-grid {
+      grid-template-columns: repeat(4, minmax(230px, 1fr));
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      scroll-snap-type: x proximity;
+    }
+
+    .ecm-card {
+      scroll-snap-align: start;
+    }
+
+    .carousel-frame {
+      min-height: 360px;
+      padding: 1rem 2.9rem;
+    }
+
+    .carousel-slide img {
+      height: 310px;
+    }
+
     .hero-portrait {
       max-height: 420px;
       object-position: 62% 35%;
@@ -544,6 +705,7 @@ title: James Bell-Torres
     .tool-card,
     .calculator,
     .result-card,
+    .ecm-card,
     .equation-library details {
       background: #1b202b;
       border-color: #3b4454;
@@ -694,25 +856,95 @@ title: James Bell-Torres
     <section id="panel-ecm">
       <div class="narrow">
         <h3>Energy Conservation Measures</h3>
-        <p>Practical building improvements generally fall into four categories: stop unnecessary operation, reduce excess demand, improve controls, and repair failed equipment.</p>
+        <p>A simple approach to finding opportunities: turn equipment off when it is not needed, reduce excess demand, optimize controls, and repair failed systems.</p>
       </div>
-      <div class="strategy-grid">
-        <div class="strategy-card">
+      <div class="ecm-grid">
+        <article class="ecm-card">
           <span class="strategy-label">1 · Turn it off</span>
-          <p>The cheapest kWh is the one never used. Watch AHU, exhaust fan, boiler, and lighting schedules, along with optimal start/stop and lockout logic.</p>
-        </div>
-        <div class="strategy-card">
+          <p class="preview">The cheapest kWh is the one never used. Pieces of equipment have a funny way to staying on when they don't have to be. Particular items to stay on the lookout for include equipment schedules, optimal start/stop sequencing, and lockouts.</p>
+          <button class="ecm-toggle" type="button" aria-expanded="false" onclick="toggleMeasure(this)">Show full measure</button>
+          <div class="ecm-full">
+            <p>The cheapest kWh is the one never used. Pieces of equipment have a funny way to staying on when they don't have to be. Particular items to stay on the lookout for:</p>
+            <ul>
+              <li>AHU, EF, and Boiler schedules</li>
+              <li>Optimal Start/Stop sequencing</li>
+              <li>Boiler and Chiller lockouts</li>
+              <li>Lighting schedules</li>
+            </ul>
+          </div>
+        </article>
+        <article class="ecm-card">
           <span class="strategy-label">2 · Turn it down</span>
-          <p>Reduce resources where systems are over-serving: duct static pressure, water temperature, pump differential pressure, night airflow, and lab setback opportunities.</p>
-        </div>
-        <div class="strategy-card">
+          <p class="preview">Often times we find that we are using too much of a resource than needed. Opportunities include pressure and temperature resets, lab setbacks, and exhaust fan stack velocity reductions.</p>
+          <button class="ecm-toggle" type="button" aria-expanded="false" onclick="toggleMeasure(this)">Show full measure</button>
+          <div class="ecm-full">
+            <p>Often times we find that we are using too much of a resource than needed. In particular:</p>
+            <ul>
+              <li>AHU duct static pressure and temperature resets</li>
+              <li>Pump differential pressure resets</li>
+              <li>Heating hot water temperature resets</li>
+              <li>Chilled water temperature resets</li>
+              <li>Condenser water resets</li>
+              <li>Night airflow and temperature setbacks: Fumehoods, Bio saftey cabnets, and unoccupied labs</li>
+              <li>Exhaust fan stack velocity reduction based on wind speed and direction</li>
+            </ul>
+          </div>
+        </article>
+        <article class="ecm-card">
           <span class="strategy-label">3 · Optimize it</span>
-          <p>Use controls well: trim-and-respond resets, wider deadbands, VAV airflow reductions, economizer tuning, minimum outside air control, and demand control ventilation.</p>
-        </div>
-        <div class="strategy-card">
+          <p class="preview">Controls are smart in today's industry. We can leverage that with automation through trim-and-respond resets, wider deadbands, airflow reductions, economizer tuning, and demand control ventilation.</p>
+          <button class="ecm-toggle" type="button" aria-expanded="false" onclick="toggleMeasure(this)">Show full measure</button>
+          <div class="ecm-full">
+            <p>Controls are smart in today's industry. We can leverage that with automation. Many ways we can do this are:</p>
+            <ul>
+              <li>Changing OAT based resets to Trim &amp; Respond based resets where applicable</li>
+              <li>Tune AHU, EF, hot water, and other resets</li>
+              <li>Widen temperature deadbands</li>
+              <li>Minimum VAV airflow setpoint reductions</li>
+              <li>Tune economizer and minimum OA damper schedule control</li>
+              <li>Implement demand control ventilation</li>
+              <li>Building envelope sealing</li>
+            </ul>
+          </div>
+        </article>
+        <article class="ecm-card">
           <span class="strategy-label">4 · Repair it</span>
-          <p>Forgotten or failed equipment can be a large opportunity. Repairs often show up at AHUs, exhaust fans, boilers, chillers, VAV boxes, and zone-level controls.</p>
+          <p class="preview">Things are forgotten about or run to failure. A large opportunity, but often timely and costly, is to repair large equipment, VAV boxes, and zone-level controls.</p>
+          <button class="ecm-toggle" type="button" aria-expanded="false" onclick="toggleMeasure(this)">Show full measure</button>
+          <div class="ecm-full">
+            <p>Thing are forgotten about or ran to failure. A large opportunity, but often timely and costly is to repair it.</p>
+            <ul>
+              <li>Repair large equipment e.g., AHUs, EFs, Boilers, Chillers</li>
+              <li>Zone level e.g., VAV boxes and controls</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="carousel" aria-label="Energy conservation measure diagrams">
+        <div class="carousel-frame">
+          <button class="carousel-control previous" type="button" onclick="moveEcmSlide(-1)" aria-label="Previous diagram">&#8249;</button>
+          <figure class="carousel-slide active">
+            <img src="/assets/images/ecm/turn-it-off.png" alt="Turn it off energy conservation opportunities" loading="lazy">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="/assets/images/ecm/turn-it-down.png" alt="Turn it down energy conservation opportunities" loading="lazy">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="/assets/images/ecm/optimize-controls.png" alt="Optimize building controls opportunities" loading="lazy">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="/assets/images/ecm/optimize-systems.png" alt="Optimize building systems opportunities" loading="lazy">
+          </figure>
+          <button class="carousel-control next" type="button" onclick="moveEcmSlide(1)" aria-label="Next diagram">&#8250;</button>
         </div>
+        <div class="carousel-dots" aria-label="Choose diagram">
+          <button class="carousel-dot active" type="button" onclick="showEcmSlide(0)" aria-label="Show diagram 1"></button>
+          <button class="carousel-dot" type="button" onclick="showEcmSlide(1)" aria-label="Show diagram 2"></button>
+          <button class="carousel-dot" type="button" onclick="showEcmSlide(2)" aria-label="Show diagram 3"></button>
+          <button class="carousel-dot" type="button" onclick="showEcmSlide(3)" aria-label="Show diagram 4"></button>
+        </div>
+        <p class="image-credit">Courtesy of Pacific Northwest National Laboratory</p>
       </div>
     </section>
 
@@ -882,6 +1114,28 @@ function switchTab(id) {
   });
 }
 document.addEventListener('DOMContentLoaded', () => switchTab('basics'));
+
+let ecmSlide = 0;
+
+function showEcmSlide(index) {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  ecmSlide = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === ecmSlide));
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === ecmSlide));
+}
+
+function moveEcmSlide(direction) {
+  showEcmSlide(ecmSlide + direction);
+}
+
+function toggleMeasure(button) {
+  const content = button.nextElementSibling;
+  const expanded = button.getAttribute('aria-expanded') === 'true';
+  button.setAttribute('aria-expanded', String(!expanded));
+  button.textContent = expanded ? 'Show full measure' : 'Hide full measure';
+  content.classList.toggle('open', !expanded);
+}
 
 const numberFormat = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const currencyFormat = new Intl.NumberFormat('en-US', {
