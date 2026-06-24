@@ -1,0 +1,639 @@
+---
+layout: default
+title: James Bell-Torres
+---
+
+<style>
+  :root {
+    --primary-color: #2C5F7C;
+    --secondary-color: #F4A261;
+    --accent-color: #E76F51;
+    --teal: #1D9E75;
+    --neutral-light: #F8F9FA;
+    --neutral-dark: #2B2D42;
+    --white: #FFFFFF;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --max-width: 1120px;
+    --max-width-narrow: 760px;
+    --radius: 8px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    color: var(--neutral-dark);
+    background: var(--white);
+    font: 17px/1.7 Georgia, "Times New Roman", serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  .site-name,
+  .nav-links,
+  .btn,
+  .tab-button,
+  label,
+  .eyebrow,
+  .stat-value,
+  .strategy-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.25;
+    margin: 0 0 1rem;
+  }
+
+  h1 {
+    font-size: 3.25rem;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--accent-color);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 3px solid rgba(29, 158, 117, 0.45);
+    outline-offset: 3px;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 0.5px solid var(--gray-200);
+  }
+
+  .site-nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .site-name {
+    color: var(--primary-color);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .nav-links a {
+    color: var(--gray-700);
+  }
+
+  .nav-links a:hover {
+    color: var(--primary-color);
+  }
+
+  .site-footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    color: var(--gray-600);
+    font-size: 0.95rem;
+  }
+
+  .section {
+    padding: 5rem 1.5rem;
+  }
+
+  .section.alt {
+    background: var(--neutral-light);
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .narrow {
+    max-width: var(--max-width-narrow);
+  }
+
+  .hero {
+    padding: 7rem 1.5rem 6rem;
+    background: linear-gradient(135deg, rgba(44, 95, 124, 0.12), rgba(244, 162, 97, 0.13));
+  }
+
+  .hero p {
+    max-width: 680px;
+    color: var(--gray-700);
+    font-size: 1.25rem;
+  }
+
+  .eyebrow {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--primary-color);
+    font-weight: 700;
+  }
+
+  .btn.primary {
+    background: var(--primary-color);
+    color: var(--white);
+  }
+
+  .btn.secondary {
+    color: var(--primary-color);
+    background: transparent;
+  }
+
+  .about-grid,
+  .tools-grid,
+  .calculator-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .skill-tags span {
+    border: 1px solid var(--teal);
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    color: var(--primary-color);
+    font: 700 0.88rem/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .plain-list {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .bridge {
+    margin: 0;
+    padding: 3rem 1.5rem;
+    background: var(--neutral-light);
+  }
+
+  .bridge blockquote {
+    max-width: var(--max-width-narrow);
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    color: var(--neutral-dark);
+    font-size: 1.35rem;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 0.5px solid var(--gray-300);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+  }
+
+  .tab-button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--gray-600);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.8rem 0.2rem;
+    white-space: nowrap;
+  }
+
+  .tab-button.active {
+    border-bottom: 2px solid #1D9E75;
+    color: var(--neutral-dark);
+  }
+
+  .stat-grid,
+  .strategy-grid,
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .stat-card,
+  .strategy-card,
+  .tool-card,
+  .calculator,
+  .result-card {
+    border: 0.5px solid #e0e0e0;
+    border-radius: 8px;
+    background: var(--white);
+    padding: 1.25rem;
+  }
+
+  .stat-value {
+    display: block;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .stat-card p,
+  .result-card p,
+  .tool-card p {
+    margin-bottom: 0;
+  }
+
+  .strategy-label {
+    color: var(--teal);
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+  }
+
+  .calculator-grid {
+    align-items: start;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--gray-700);
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  input {
+    width: 100%;
+    border: 0.5px solid #d4d8dc;
+    border-radius: 8px;
+    padding: 0.7rem;
+    color: var(--neutral-dark);
+    background: var(--white);
+    font: inherit;
+  }
+
+  .result-card strong {
+    display: block;
+    color: var(--primary-color);
+    font: 800 1.5rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .footnote {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+  }
+
+  .contact-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 760px) {
+    h1 {
+      font-size: 2.45rem;
+    }
+
+    .site-nav {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+    }
+
+    .hero,
+    .section {
+      padding: 4rem 1rem;
+    }
+
+    .about-grid,
+    .tools-grid,
+    .calculator-grid,
+    .stat-grid,
+    .strategy-grid,
+    .result-grid,
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --neutral-light: #1f2430;
+      --neutral-dark: #F1F4F7;
+      --white: #151922;
+      --gray-100: #1f2430;
+      --gray-200: #2b3240;
+      --gray-300: #3b4454;
+      --gray-600: #B8C1CC;
+      --gray-700: #D7DEE7;
+    }
+
+    body,
+    input {
+      background: var(--white);
+      color: var(--neutral-dark);
+    }
+
+    .site-header {
+      background: rgba(21, 25, 34, 0.96);
+      border-bottom-color: var(--gray-300);
+    }
+
+    .stat-card,
+    .strategy-card,
+    .tool-card,
+    .calculator,
+    .result-card {
+      background: #1b202b;
+      border-color: #3b4454;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(44, 95, 124, 0.35), rgba(244, 162, 97, 0.16));
+    }
+  }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Building Energy Engineer · San Diego, CA</p>
+    <h1>James Bell-Torres</h1>
+    <p>Energy and sustainability subject matter expert focused on finding practical energy and water waste in commercial, campus, and lab buildings.</p>
+    <div class="button-row">
+      <a class="btn primary" href="#about">About James</a>
+      <a class="btn secondary" href="#knowledge">Explore Knowledge</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div>
+      <h2>About</h2>
+      <p>James Bell-Torres likes reducing energy and water waste while making building systems easier to understand. His work centers on finding misbehaving building systems, quantifying the waste, and turning those findings into practical projects.</p>
+      <p>His experience includes utility incentive program research and design, demand response and customer-side load management program development, and commercial energy saving products and services.</p>
+      <p>For client campuses, his work has included corporate zero emissions roadmap creation, integrated facility management stakeholder engagement, existing building commissioning strategy, and energy hurdles across cafes, R&amp;D labs, chemistry labs, GMP facilities, and offices.</p>
+      <div class="skill-tags" aria-label="Skills">
+        <span>HVAC/BAS</span>
+        <span>ASHRAE Audits</span>
+        <span>Lab Buildings</span>
+        <span>CxPlots</span>
+        <span>JLL</span>
+      </div>
+    </div>
+    <aside>
+      <h3>Relevant Experience</h3>
+      <ul class="plain-list">
+        <li>AHU, boiler, chiller, cooling tower, and pump sequence optimization</li>
+        <li>Building automation system override management and controls corrections</li>
+        <li>Fault Detection and Diagnostics program improvement</li>
+        <li>Asset work including EV chargers, fuel cells, PV solar, lighting controls, and submetering</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<div class="bridge">
+  <blockquote>
+    Over a decade working on commercial and lab buildings, I've developed a structured approach to finding energy waste. Here's what I've learned.
+  </blockquote>
+</div>
+
+<section class="section" id="knowledge">
+  <div class="container">
+    <h2>Knowledge</h2>
+    <div class="tabs" role="tablist" aria-label="Building energy knowledge">
+      <button class="tab-button" id="btn-basics" onclick="switchTab('basics')" type="button">Building basics</button>
+      <button class="tab-button" id="btn-strategy" onclick="switchTab('strategy')" type="button">Reduction strategy</button>
+      <button class="tab-button" id="btn-quant" onclick="switchTab('quant')" type="button">Quantification</button>
+    </div>
+
+    <section id="panel-basics">
+      <div class="narrow">
+        <h3>Why buildings matter</h3>
+        <p>Buildings give us comfortable places to gather when it is hot or cold outside. They also provide space to conduct science, build technology, and provide entertainment. To do that, they consume electricity, natural gas, and water to keep people safe, comfortable, and productive.</p>
+        <p>The building industry is good at providing fresh air, comfort, and keeping processes going. When diligence slips, though, a lot of energy waste can hide in plain sight.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-value">40%</span>
+          <p>U.S. energy consumed by buildings</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">39.4 qBTU</span>
+          <p>Annual U.S. building energy consumption</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">90%</span>
+          <p>Average lifetime spent inside buildings</p>
+        </div>
+      </div>
+      <p class="footnote">Exact numeric end-use percentages for HVAC, lighting, and plug loads were not available in the selected source files.</p>
+    </section>
+
+    <section id="panel-strategy">
+      <div class="narrow">
+        <h3>Reduction strategy</h3>
+        <p>A simple plan keeps energy work from turning into a maze: get leadership and stakeholder buy-in, benchmark buildings, set KPIs and goals, create an action plan, implement, evaluate progress, and adjust the plan as performance changes.</p>
+      </div>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <span class="strategy-label">1 · Turn it off</span>
+          <p>The cheapest kWh is the one never used. Watch AHU, exhaust fan, boiler, and lighting schedules, along with optimal start/stop and lockout logic.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-label">2 · Turn it down</span>
+          <p>Reduce resources where systems are over-serving: duct static pressure, water temperature, pump differential pressure, night airflow, and lab setback opportunities.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-label">3 · Optimize it</span>
+          <p>Use controls well: trim-and-respond resets, wider deadbands, VAV airflow reductions, economizer tuning, minimum outside air control, and demand control ventilation.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-label">4 · Repair it</span>
+          <p>Forgotten or failed equipment can be a large opportunity. Repairs often show up at AHUs, exhaust fans, boilers, chillers, VAV boxes, and zone-level controls.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-quant">
+      <div class="narrow">
+        <h3>Quantification</h3>
+        <p>Quantification turns a good building observation into an actionable decision. The detailed HVAC methods often use climate data and temperature-bin simulations; this quick calculator estimates savings from avoided AHU runtime.</p>
+      </div>
+      <div class="calculator-grid">
+        <form class="calculator" id="savings-calculator">
+          <h3>Energy savings calculator</h3>
+          <div class="field-grid">
+            <label for="ahu-count">Number of AHUs
+              <input id="ahu-count" name="ahu-count" type="number" min="0" step="1" value="4">
+            </label>
+            <label for="kw-per-ahu">Average kW per AHU
+              <input id="kw-per-ahu" name="kw-per-ahu" type="number" min="0" step="0.1" value="12">
+            </label>
+            <label for="hours-saved">Hours saved per day
+              <input id="hours-saved" name="hours-saved" type="number" min="0" step="0.25" value="2">
+            </label>
+            <label for="energy-rate">Energy rate ($/kWh)
+              <input id="energy-rate" name="energy-rate" type="number" min="0" step="0.01" value="0.22">
+            </label>
+          </div>
+          <p class="footnote">Assumes 250 operating days/year</p>
+        </form>
+        <div class="result-grid" aria-live="polite">
+          <div class="result-card">
+            <strong id="annual-kwh">24,000</strong>
+            <p>annual kWh saved</p>
+          </div>
+          <div class="result-card">
+            <strong id="annual-dollars">$5,280</strong>
+            <p>estimated dollars saved per year</p>
+          </div>
+          <div class="result-card">
+            <strong id="annual-co2">9</strong>
+            <p>metric tons CO2 avoided</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="section alt" id="tools">
+  <div class="container">
+    <h2>Tools</h2>
+    <div class="tools-grid">
+      <article class="tool-card">
+        <h3>Energy savings calculator</h3>
+        <p>Estimate annual kWh, dollars, and metric tons CO2 avoided for simple AHU runtime reductions.</p>
+        <p><a href="#knowledge" onclick="switchTab('quant')">Open the Quantification tab</a></p>
+      </article>
+      <article class="tool-card">
+        <h3>CxPlots</h3>
+        <p>Explore CxPlots for commissioning and building data visualization workflows.</p>
+        <p><a href="https://cxplots.com" target="_blank" rel="noopener">Visit CxPlots</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container narrow">
+    <h2>Contact</h2>
+    <p>For building energy, commissioning, and controls work, use the links below.</p>
+    <div class="contact-list">
+      <a href="mailto:jamesbuildingenergytools@gmail.com">jamesbuildingenergytools@gmail.com</a>
+      <a href="#contact">TODO: Add James Bell-Torres LinkedIn URL</a>
+      <a href="https://cxplots.com" target="_blank" rel="noopener">CxPlots</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function switchTab(id) {
+  ['basics', 'strategy', 'quant'].forEach(t => {
+    document.getElementById('panel-' + t).style.display = t === id ? 'block' : 'none';
+    document.getElementById('btn-' + t).classList.toggle('active', t === id);
+  });
+}
+document.addEventListener('DOMContentLoaded', () => switchTab('basics'));
+
+const numberFormat = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+const currencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0
+});
+
+function readNumber(id) {
+  return Number(document.getElementById(id).value) || 0;
+}
+
+function updateCalculator() {
+  const annualKwh = readNumber('ahu-count') * readNumber('kw-per-ahu') * readNumber('hours-saved') * 250;
+  const dollars = annualKwh * readNumber('energy-rate');
+  const co2 = annualKwh * 0.000386;
+
+  document.getElementById('annual-kwh').textContent = numberFormat.format(Math.round(annualKwh));
+  document.getElementById('annual-dollars').textContent = currencyFormat.format(Math.round(dollars));
+  document.getElementById('annual-co2').textContent = numberFormat.format(Math.round(co2));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#savings-calculator input').forEach(input => {
+    input.addEventListener('input', updateCalculator);
+  });
+  updateCalculator();
+});
+</script>

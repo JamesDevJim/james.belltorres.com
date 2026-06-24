@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.description }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="site-name" href="#top">James Bell-Torres</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#knowledge">Knowledge</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main id="top">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <p>&copy; {{ 'now' | date: "%Y" }} James Bell-Torres</p>
+  </footer>
+</body>
+</html>
