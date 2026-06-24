@@ -60,7 +60,7 @@ Source Staatic files used:
 
 Content extracted:
 
-- Home: building basics prose, 90% time in buildings, 40% U.S. energy consumed by buildings, 39.4 qBTU annual U.S. building energy consumption, reduction strategy steps, and opportunity labels for schedules, resets, optimization, and repairs.
+- Home: building basics prose, 90% time in buildings, 40% U.S. energy consumed by buildings, 39.4 qBTU annual U.S. building energy consumption, the sustainability strategy process, and energy conservation measure labels for schedules, resets, optimization, and repairs.
 - About: professional bio positioning, energy and water waste focus, utility incentive program work, demand response/load management, campus energy and water management, lab and GMP facility experience, controls optimization, BAS overrides, FDD, and asset categories.
 - Quantification: original equation references for energy, cost, savings, efficiency, heat, electrical power, motors, boilers, chiller COP, water leaks, AHU calculations, and whole-HVAC calculations.
 - Tools: a simplified AHU runtime calculator implementing the requested energy, cost, and CO2 formulas in vanilla JavaScript.
