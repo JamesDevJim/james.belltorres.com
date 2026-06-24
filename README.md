@@ -20,7 +20,13 @@ The public GitHub repo was created at:
 
 https://github.com/JamesDevJim/james.belltorres.com
 
-Manual GitHub Pages settings still required:
+GitHub Pages was configured during migration:
+
+- Source: Deploy from a branch
+- Branch/path: `main` / `/root`
+- Custom domain: `james.belltorres.com`
+
+If settings ever need to be restored manually:
 
 1. Open Settings -> Pages.
 2. Set Source to "Deploy from a branch".
