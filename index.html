@@ -159,6 +159,22 @@ title: James Bell-Torres
     background: linear-gradient(135deg, rgba(44, 95, 124, 0.12), rgba(244, 162, 97, 0.13));
   }
 
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero-portrait {
+    width: 100%;
+    max-height: 480px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 62% center;
+    border-radius: var(--radius);
+  }
+
   .hero p {
     max-width: 680px;
     color: var(--gray-700);
@@ -356,6 +372,94 @@ title: James Bell-Torres
     margin-top: 1.5rem;
   }
 
+  .media-strip,
+  .stock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .stock-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .media-strip img,
+  .stock-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  figcaption {
+    margin-top: 0.55rem;
+    color: var(--gray-600);
+    font: 600 0.82rem/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .diagram {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 0.5px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .equation-library {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .equation-library details {
+    border: 0.5px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: var(--white);
+  }
+
+  .equation-library summary {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    color: var(--primary-color);
+    font: 700 1rem/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .equation-library details[open] summary {
+    border-bottom: 0.5px solid #e0e0e0;
+  }
+
+  .equation-sequence {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff;
+  }
+
+  .equation-sequence img {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    padding: 0.5rem;
+    border: 0.5px solid #ededed;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  .tools-grid {
+    margin-top: 2rem;
+  }
+
   @media (max-width: 760px) {
     h1 {
       font-size: 2.45rem;
@@ -377,18 +481,27 @@ title: James Bell-Torres
     }
 
     .about-grid,
+    .hero-grid,
     .tools-grid,
     .calculator-grid,
     .stat-grid,
     .strategy-grid,
     .result-grid,
-    .field-grid {
+    .field-grid,
+    .media-strip,
+    .stock-grid {
       grid-template-columns: 1fr;
+    }
+
+    .hero-portrait {
+      max-height: 420px;
+      object-position: 62% 35%;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
+      --primary-color: #79B8D8;
       --neutral-light: #1f2430;
       --neutral-dark: #F1F4F7;
       --white: #151922;
@@ -414,7 +527,8 @@ title: James Bell-Torres
     .strategy-card,
     .tool-card,
     .calculator,
-    .result-card {
+    .result-card,
+    .equation-library details {
       background: #1b202b;
       border-color: #3b4454;
     }
@@ -422,18 +536,26 @@ title: James Bell-Torres
     .hero {
       background: linear-gradient(135deg, rgba(44, 95, 124, 0.35), rgba(244, 162, 97, 0.16));
     }
+
+    .btn.primary {
+      background: #79B8D8;
+      color: #10151d;
+    }
   }
 </style>
 
 <section class="hero">
-  <div class="container">
-    <p class="eyebrow">Building Energy Engineer · San Diego, CA</p>
-    <h1>James Bell-Torres</h1>
-    <p>Energy and sustainability subject matter expert focused on finding practical energy and water waste in commercial, campus, and lab buildings.</p>
-    <div class="button-row">
-      <a class="btn primary" href="#about">About James</a>
-      <a class="btn secondary" href="#knowledge">Explore Knowledge</a>
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Building Energy Engineer · San Diego, CA</p>
+      <h1>James Bell-Torres</h1>
+      <p>Energy and sustainability subject matter expert focused on finding practical energy and water waste in commercial, campus, and lab buildings.</p>
+      <div class="button-row">
+        <a class="btn primary" href="#about">About James</a>
+        <a class="btn secondary" href="#knowledge">Explore Knowledge</a>
+      </div>
     </div>
+    <img class="hero-portrait" src="/assets/images/james-bell-torres.jpg" alt="James Bell-Torres">
   </div>
 </section>
 
@@ -461,6 +583,20 @@ title: James Bell-Torres
         <li>Asset work including EV chargers, fuel cells, PV solar, lighting controls, and submetering</li>
       </ul>
     </aside>
+    <div class="media-strip" style="grid-column: 1 / -1;">
+      <figure>
+        <img src="/assets/images/field/solar-pv-troubleshooting.jpg" alt="James Bell-Torres troubleshooting a rooftop solar photovoltaic array" loading="lazy">
+        <figcaption>Troubleshooting a photovoltaic ground fault</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/images/field/existing-building-commissioning-cohort.jpg" alt="Existing Building Commissioning cohort on a commercial rooftop" loading="lazy">
+        <figcaption>Existing Building Commissioning cohort</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/images/field/sling-hygrometer-fieldwork.jpg" alt="James Bell-Torres taking a field measurement with a sling hygrometer" loading="lazy">
+        <figcaption>Field measurement with a sling hygrometer</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -499,6 +635,25 @@ title: James Bell-Torres
           <p>Average lifetime spent inside buildings</p>
         </div>
       </div>
+      <img class="diagram" src="/assets/images/diagrams/building-energy-flow.png" alt="Diagram showing resources entering a building and useful output, emissions, and waste leaving it" loading="lazy">
+      <div class="stock-grid">
+        <figure>
+          <img src="/assets/images/stock/efficient-lighting.jpg" alt="Energy-efficient light bulb" loading="lazy">
+          <figcaption>Lighting efficiency</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/building-equipment.jpg" alt="Building electrical equipment and controls" loading="lazy">
+          <figcaption>Equipment and controls</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/water-efficiency.jpg" alt="Water flowing from a faucet" loading="lazy">
+          <figcaption>Water efficiency</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/energy-costs.jpg" alt="Currency representing building operating costs" loading="lazy">
+          <figcaption>Operating cost</figcaption>
+        </figure>
+      </div>
       <p class="footnote">Exact numeric end-use percentages for HVAC, lighting, and plug loads were not available in the selected source files.</p>
     </section>
 
@@ -525,46 +680,98 @@ title: James Bell-Torres
           <p>Forgotten or failed equipment can be a large opportunity. Repairs often show up at AHUs, exhaust fans, boilers, chillers, VAV boxes, and zone-level controls.</p>
         </div>
       </div>
+      <img class="diagram" src="/assets/images/diagrams/strategic-energy-management.png" alt="Strategic energy management process from energy policy through planning, action, monitoring, and improved performance" loading="lazy">
     </section>
 
     <section id="panel-quant">
       <div class="narrow">
         <h3>Quantification</h3>
-        <p>Quantification turns a good building observation into an actionable decision. The detailed HVAC methods often use climate data and temperature-bin simulations; this quick calculator estimates savings from avoided AHU runtime.</p>
+        <p>Quantification turns a good building observation into an actionable decision. These references preserve the original site's core equations for energy, cost, heat, power, equipment, water, and HVAC calculations.</p>
       </div>
-      <div class="calculator-grid">
-        <form class="calculator" id="savings-calculator">
-          <h3>Energy savings calculator</h3>
-          <div class="field-grid">
-            <label for="ahu-count">Number of AHUs
-              <input id="ahu-count" name="ahu-count" type="number" min="0" step="1" value="4">
-            </label>
-            <label for="kw-per-ahu">Average kW per AHU
-              <input id="kw-per-ahu" name="kw-per-ahu" type="number" min="0" step="0.1" value="12">
-            </label>
-            <label for="hours-saved">Hours saved per day
-              <input id="hours-saved" name="hours-saved" type="number" min="0" step="0.25" value="2">
-            </label>
-            <label for="energy-rate">Energy rate ($/kWh)
-              <input id="energy-rate" name="energy-rate" type="number" min="0" step="0.01" value="0.22">
-            </label>
+      <div class="equation-library">
+        <details open>
+          <summary>Building blocks: energy, cost, savings, and efficiency</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation2a.png" alt="Energy equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation2b.png" alt="Energy equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation2c.png" alt="Energy equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/EquationCost1.png" alt="Energy cost equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationCost2.png" alt="Energy cost equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/EquationCost3.png" alt="Energy cost equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/EquationSavings1.png" alt="Energy savings equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationSavings2.png" alt="Energy savings equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/EquationSavings3.png" alt="Energy savings equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/EquationEfficiency0.png" alt="Efficiency equation, definition" loading="lazy">
+            <img src="/assets/images/equations/EquationEfficiency1.png" alt="Efficiency equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationEfficiency2.png" alt="Efficiency equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/EquationEfficiency3.png" alt="Efficiency equation, step 3" loading="lazy">
           </div>
-          <p class="footnote">Assumes 250 operating days/year</p>
-        </form>
-        <div class="result-grid" aria-live="polite">
-          <div class="result-card">
-            <strong id="annual-kwh">24,000</strong>
-            <p>annual kWh saved</p>
+        </details>
+        <details>
+          <summary>Heat: sensible air, total air, and water</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation3a.png" alt="Sensible heat equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation3b-1.png" alt="Sensible heat equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_Heat_Totalair1.png" alt="Total air heat equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_Heat_Totalair2.png" alt="Total air heat equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation.png" alt="Total water heat equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation1a-1.png" alt="Total water heat equation, step 2" loading="lazy">
           </div>
-          <div class="result-card">
-            <strong id="annual-dollars">$5,280</strong>
-            <p>estimated dollars saved per year</p>
+        </details>
+        <details>
+          <summary>Electrical power: simple, single-phase, and three-phase</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation_Power1.png" alt="Simple power equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_Power2.png" alt="Simple power equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_Power3.png" alt="Simple power equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerSingle1-1.png" alt="Single-phase power equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerSingle2-1.png" alt="Single-phase power equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerSingle3.png" alt="Single-phase power equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerSingle4.png" alt="Single-phase power equation, step 4" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerThree1.png" alt="Three-phase power equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerThree2.png" alt="Three-phase power equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerThree3.png" alt="Three-phase power equation, step 3" loading="lazy">
+            <img src="/assets/images/equations/Equation_PowerThree4.png" alt="Three-phase power equation, step 4" loading="lazy">
           </div>
-          <div class="result-card">
-            <strong id="annual-co2">9</strong>
-            <p>metric tons CO2 avoided</p>
+        </details>
+        <details>
+          <summary>Motors, boilers, and chiller COP</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/EquationMotors1-1.png" alt="Motor energy equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationMotors2-1.png" alt="Motor energy equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/EquationBoiler1.png" alt="Boiler energy equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationBoiler2.png" alt="Boiler energy equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_COP1.png" alt="Chiller coefficient of performance equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_COP2.png" alt="Chiller coefficient of performance equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_COP3.png" alt="Chiller coefficient of performance equation, step 3" loading="lazy">
           </div>
-        </div>
+        </details>
+        <details>
+          <summary>Water leak waste</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation_Water1.png" alt="Water leak waste equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_water2.png" alt="Water leak waste equation, step 2" loading="lazy">
+          </div>
+        </details>
+        <details>
+          <summary>AHU coil leak-by and mixed air</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation_leakby1.png" alt="AHU coil leak-by equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_leakby2.png" alt="AHU coil leak-by equation, step 2" loading="lazy">
+            <img src="/assets/images/equations/Equation_leakby3.png" alt="AHU coil leak-by equation, step 3" loading="lazy">
+            <img src="/assets/images/diagrams/coil-leak-by.png" alt="AHU heating and cooling coil leak-by diagram" loading="lazy">
+            <img src="/assets/images/equations/Equation_AHU1.png" alt="AHU mixed-air equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_AHU2.png" alt="AHU mixed-air equation, step 2" loading="lazy">
+          </div>
+        </details>
+        <details>
+          <summary>Whole-HVAC energy consumption and savings</summary>
+          <div class="equation-sequence">
+            <img src="/assets/images/equations/Equation_HVAC1-1.png" alt="Comprehensive HVAC equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_HVAC2-1.png" alt="Comprehensive HVAC equation, step 2" loading="lazy">
+            <img src="/assets/images/diagrams/hvac-energy-flow.png" alt="HVAC energy flow through heating, cooling, and fan systems" loading="lazy">
+          </div>
+        </details>
       </div>
     </section>
   </div>
@@ -573,11 +780,45 @@ title: James Bell-Torres
 <section class="section alt" id="tools">
   <div class="container">
     <h2>Tools</h2>
+    <div class="calculator-grid">
+      <form class="calculator" id="savings-calculator">
+        <h3>Energy savings calculator</h3>
+        <div class="field-grid">
+          <label for="ahu-count">Number of AHUs
+            <input id="ahu-count" name="ahu-count" type="number" min="0" step="1" value="4">
+          </label>
+          <label for="kw-per-ahu">Average kW per AHU
+            <input id="kw-per-ahu" name="kw-per-ahu" type="number" min="0" step="0.1" value="12">
+          </label>
+          <label for="hours-saved">Hours saved per day
+            <input id="hours-saved" name="hours-saved" type="number" min="0" step="0.25" value="2">
+          </label>
+          <label for="energy-rate">Energy rate ($/kWh)
+            <input id="energy-rate" name="energy-rate" type="number" min="0" step="0.01" value="0.22">
+          </label>
+        </div>
+        <p class="footnote">Assumes 250 operating days/year</p>
+      </form>
+      <div class="result-grid" aria-live="polite">
+        <div class="result-card">
+          <strong id="annual-kwh">24,000</strong>
+          <p>annual kWh saved</p>
+        </div>
+        <div class="result-card">
+          <strong id="annual-dollars">$5,280</strong>
+          <p>estimated dollars saved per year</p>
+        </div>
+        <div class="result-card">
+          <strong id="annual-co2">9</strong>
+          <p>metric tons CO2 avoided</p>
+        </div>
+      </div>
+    </div>
     <div class="tools-grid">
       <article class="tool-card">
-        <h3>Energy savings calculator</h3>
-        <p>Estimate annual kWh, dollars, and metric tons CO2 avoided for simple AHU runtime reductions.</p>
-        <p><a href="#knowledge" onclick="switchTab('quant')">Open the Quantification tab</a></p>
+        <h3>Equation reference</h3>
+        <p>Review the energy, heat, power, equipment, water, AHU, and HVAC equations preserved from the original site.</p>
+        <p><a href="#knowledge" onclick="switchTab('quant')">Open Quantification</a></p>
       </article>
       <article class="tool-card">
         <h3>CxPlots</h3>

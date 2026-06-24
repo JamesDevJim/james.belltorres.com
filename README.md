@@ -62,12 +62,14 @@ Content extracted:
 
 - Home: building basics prose, 90% time in buildings, 40% U.S. energy consumed by buildings, 39.4 qBTU annual U.S. building energy consumption, reduction strategy steps, and opportunity labels for schedules, resets, optimization, and repairs.
 - About: professional bio positioning, energy and water waste focus, utility incentive program work, demand response/load management, campus energy and water management, lab and GMP facility experience, controls optimization, BAS overrides, FDD, and asset categories.
-- Quantification: calculator concepts, input/output naming patterns, and formula-style energy/cost/CO2 savings logic. The new calculator implements the requested simplified AHU formula in vanilla JavaScript.
+- Quantification: original equation references for energy, cost, savings, efficiency, heat, electrical power, motors, boilers, chiller COP, water leaks, AHU calculations, and whole-HVAC calculations.
+- Tools: a simplified AHU runtime calculator implementing the requested energy, cost, and CO2 formulas in vanilla JavaScript.
+- Images: James' professional portrait, three professional fieldwork photos, four stock images used on the About page, building-energy and strategic-management diagrams, AHU/HVAC diagrams, and the equation images referenced by the selected source pages.
 
 Content intentionally omitted:
 
 - WordPress, Staatic, Elementor, OceanWP, plugin, shortcode, and `wp-content` markup/classes/scripts.
-- Staatic export images.
+- Unused theme images, plugin graphics, duplicate WordPress thumbnails, personal/travel/hobby images, and images referenced only by excluded pages.
 - Feeds, RSS, sitemaps, XML, `wp-json`, blog posts, archive pages, author/category pages, comments, login/admin references, visualization, quiz/challenge, and kite content.
 - References to the retired source domain.
 - Personal/family/travel/hobby material and professional testimonials naming other people.
