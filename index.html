@@ -572,40 +572,100 @@ title: James Bell-Torres
     background: #fff;
   }
 
-  .equation-library {
-    display: grid;
-    gap: 0.75rem;
-    margin-top: 2rem;
+  .quant-topic-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 2rem 0 1.5rem;
+    border-bottom: 0.5px solid #e0e0e0;
   }
 
-  .equation-library details {
+  .quant-topic-tabs button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 0.9rem;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--gray-600);
+    background: transparent;
+    cursor: pointer;
+    font: 700 0.9rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .quant-topic-tabs button.active {
+    border-bottom-color: var(--teal);
+    color: var(--primary-color);
+  }
+
+  .quant-panel {
+    display: none;
+  }
+
+  .quant-panel.active {
+    display: block;
+  }
+
+  .equation-library {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .equation-card {
+    overflow: hidden;
     border: 0.5px solid #e0e0e0;
     border-radius: var(--radius);
     background: var(--white);
   }
 
-  .equation-library summary {
-    cursor: pointer;
-    padding: 1rem 1.25rem;
-    color: var(--primary-color);
-    font: 700 1rem/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  .equation-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.8rem 0.9rem 0.55rem;
   }
 
-  .equation-library details[open] summary {
-    border-bottom: 0.5px solid #e0e0e0;
+  .equation-card-header h4 {
+    margin: 0;
+    color: var(--primary-color);
+    font: 800 1rem/1.25 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .equation-icon {
+    display: inline-grid;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 2rem;
+    place-items: center;
+    border: 0.5px solid #d4d8dc;
+    border-radius: 50%;
+    color: var(--primary-color);
+    background: var(--gray-100);
+  }
+
+  .equation-icon svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .equation-carousel {
-    padding: 1rem;
+    padding: 0.35rem 0.65rem 0.75rem;
     background: #fff;
   }
 
   .equation-viewport {
     position: relative;
-    min-height: 250px;
+    min-height: 165px;
     display: grid;
     place-items: center;
-    padding: 1rem 3.5rem;
+    padding: 0.4rem 2.7rem;
   }
 
   .equation-slide {
@@ -621,14 +681,14 @@ title: James Bell-Torres
   .equation-slide img {
     display: block;
     width: 100%;
-    height: 170px;
+    height: 145px;
     object-fit: contain;
     padding: 0.5rem;
     background: #fff;
   }
 
   .equation-slide.diagram-slide img {
-    height: 240px;
+    height: 205px;
   }
 
   .equation-caption {
@@ -723,17 +783,29 @@ title: James Bell-Torres
       height: 310px;
     }
 
+    .equation-library {
+      grid-template-columns: 1fr;
+    }
+
+    .quant-topic-tabs {
+      gap: 0.25rem;
+    }
+
+    .quant-topic-tabs button {
+      padding: 0.65rem 0.55rem;
+    }
+
     .equation-viewport {
-      min-height: 230px;
-      padding: 0.75rem 2.8rem;
+      min-height: 155px;
+      padding: 0.35rem 2.45rem;
     }
 
     .equation-slide img {
-      height: 145px;
+      height: 120px;
     }
 
     .equation-slide.diagram-slide img {
-      height: 190px;
+      height: 165px;
     }
 
     .hero-portrait {
@@ -772,8 +844,17 @@ title: James Bell-Torres
     .calculator,
     .result-card,
     .ecm-card,
-    .equation-library details {
+    .equation-card {
       background: #1b202b;
+      border-color: #3b4454;
+    }
+
+    .quant-topic-tabs {
+      border-bottom-color: #3b4454;
+    }
+
+    .equation-icon {
+      background: #232a36;
       border-color: #3b4454;
     }
 
@@ -1017,93 +1098,64 @@ title: James Bell-Torres
     <section id="panel-quant">
       <div class="narrow">
         <h3>Quantification</h3>
-        <p>Quantification turns a good building observation into an actionable decision. Browse the original equation sequences by building system and calculation type.</p>
+        <p>Quantification turns a good building observation into an actionable decision. Browse the original equation sequences by topic, with each carousel starting from the simplest form and moving into common unit options or system-specific variations.</p>
       </div>
-      <div class="equation-library">
-        <details open>
-          <summary>Basics · Building Blocks</summary>
-          <div class="equation-carousel" data-index="0">
-            <div class="equation-viewport">
-              <button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous equation">&#8249;</button>
-              <figure class="equation-slide active"><img src="/assets/images/equations/Equation2a.png" alt="Energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Energy · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation2b.png" alt="Energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Energy · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation2c.png" alt="Energy equation, step 3" loading="lazy"><figcaption class="equation-caption">Energy · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationCost1.png" alt="Energy cost equation, step 1" loading="lazy"><figcaption class="equation-caption">Cost · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationCost2.png" alt="Energy cost equation, step 2" loading="lazy"><figcaption class="equation-caption">Cost · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationCost3.png" alt="Energy cost equation, step 3" loading="lazy"><figcaption class="equation-caption">Cost · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationSavings1.png" alt="Energy savings equation, step 1" loading="lazy"><figcaption class="equation-caption">Savings · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationSavings2.png" alt="Energy savings equation, step 2" loading="lazy"><figcaption class="equation-caption">Savings · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationSavings3.png" alt="Energy savings equation, step 3" loading="lazy"><figcaption class="equation-caption">Savings · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency0.png" alt="Efficiency equation definition" loading="lazy"><figcaption class="equation-caption">Efficiency · Definition</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency1.png" alt="Efficiency equation, step 1" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency2.png" alt="Efficiency equation, step 2" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency3.png" alt="Efficiency equation, step 3" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 3</figcaption></figure>
-              <button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next equation">&#8250;</button>
-            </div>
-            <div class="equation-status" aria-live="polite">1 of 13</div>
-          </div>
-        </details>
-        <details>
-          <summary>Basics · Heat</summary>
-          <div class="equation-carousel" data-index="0">
-            <div class="equation-viewport">
-              <button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous heat equation">&#8249;</button>
-              <figure class="equation-slide active"><img src="/assets/images/equations/Equation3a.png" alt="Sensible heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Sensible Heat (Air) · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation3b-1.png" alt="Sensible heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Sensible Heat (Air) · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_Heat_Totalair1.png" alt="Total air heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Total Heat (Air) · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_Heat_Totalair2.png" alt="Total air heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Total Heat (Air) · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation.png" alt="Total water heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Total Heat (Water) · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation1a-1.png" alt="Total water heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Total Heat (Water) · Step 2</figcaption></figure>
-              <button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next heat equation">&#8250;</button>
-            </div>
-            <div class="equation-status" aria-live="polite">1 of 6</div>
-          </div>
-        </details>
-        <details>
-          <summary>Basics · Power</summary>
-          <div class="equation-carousel" data-index="0">
-            <div class="equation-viewport">
-              <button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous power equation">&#8249;</button>
-              <figure class="equation-slide active"><img src="/assets/images/equations/Equation_Power1.png" alt="Simple power equation, step 1" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_Power2.png" alt="Simple power equation, step 2" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_Power3.png" alt="Simple power equation, step 3" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle1-1.png" alt="Single-phase power equation, step 1" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle2-1.png" alt="Single-phase power equation, step 2" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle3.png" alt="Single-phase power equation, step 3" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle4.png" alt="Single-phase power equation, step 4" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 4</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree1.png" alt="Three-phase power equation, step 1" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 1</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree2.png" alt="Three-phase power equation, step 2" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 2</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree3.png" alt="Three-phase power equation, step 3" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 3</figcaption></figure>
-              <figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree4.png" alt="Three-phase power equation, step 4" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 4</figcaption></figure>
-              <button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next power equation">&#8250;</button>
-            </div>
-            <div class="equation-status" aria-live="polite">1 of 11</div>
-          </div>
-        </details>
-        <details>
-          <summary>Motors</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous motor equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationMotors1-1.png" alt="Motor energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Motor Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationMotors2-1.png" alt="Motor energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Motor Equation · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next motor equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div>
-        </details>
-        <details>
-          <summary>Boilers</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous boiler equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationBoiler1.png" alt="Boiler energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Boiler Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationBoiler2.png" alt="Boiler energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Boiler Equation · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next boiler equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div>
-        </details>
-        <details>
-          <summary>Chillers · Coefficient of Performance</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous chiller equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_COP1.png" alt="Chiller coefficient of performance equation, step 1" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_COP2.png" alt="Chiller coefficient of performance equation, step 2" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_COP3.png" alt="Chiller coefficient of performance equation, step 3" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next chiller equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div>
-        </details>
-        <details>
-          <summary>Water · Leak Waste</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous water equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_Water1.png" alt="Water leak waste equation, step 1" loading="lazy"><figcaption class="equation-caption">Leak Waste · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_water2.png" alt="Water leak waste equation, step 2" loading="lazy"><figcaption class="equation-caption">Leak Waste · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next water equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div>
-        </details>
-        <details>
-          <summary>AHU · Coil Leak-by and Mixed Air</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous AHU equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_leakby1.png" alt="AHU coil leak-by equation, step 1" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_leakby2.png" alt="AHU coil leak-by equation, step 2" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_leakby3.png" alt="AHU coil leak-by equation, step 3" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 3</figcaption></figure><figure class="equation-slide diagram-slide"><img src="/assets/images/diagrams/coil-leak-by.png" alt="AHU heating and cooling coil leak-by diagram" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Diagram</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_AHU1.png" alt="AHU mixed-air equation, step 1" loading="lazy"><figcaption class="equation-caption">Mixed Air · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_AHU2.png" alt="AHU mixed-air equation, step 2" loading="lazy"><figcaption class="equation-caption">Mixed Air · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next AHU equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 6</div></div>
-        </details>
-        <details>
-          <summary>Whole Building · Comprehensive HVAC</summary>
-          <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous whole-building equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_HVAC1-1.png" alt="Comprehensive HVAC equation, step 1" loading="lazy"><figcaption class="equation-caption">Energy Consumption &amp; Savings · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_HVAC2-1.png" alt="Comprehensive HVAC equation, step 2" loading="lazy"><figcaption class="equation-caption">Energy Consumption &amp; Savings · Step 2</figcaption></figure><figure class="equation-slide diagram-slide"><img src="/assets/images/diagrams/hvac-energy-flow.png" alt="HVAC energy flow through heating, cooling, and fan systems" loading="lazy"><figcaption class="equation-caption">Comprehensive HVAC · Diagram</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next whole-building equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div>
-        </details>
+
+      <div class="quant-topic-tabs" role="tablist" aria-label="Quantification topics">
+        <button id="quant-btn-basics" class="active" type="button" role="tab" aria-controls="quant-panel-basics" aria-selected="true" onclick="switchQuantTopic('basics')"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span>Basics</button>
+        <button id="quant-btn-heat-power" type="button" role="tab" aria-controls="quant-panel-heat-power" aria-selected="false" onclick="switchQuantTopic('heat-power')"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 14c-1.2-3 2-5 2-8 3 2 5 5 4 8 .9-.6 1.5-1.5 2-2.5 1.5 3.5-.8 8.5-5 8.5-3.3 0-5.7-2.5-5.7-5.5 0-1.6.7-3 1.8-4 .1 1.4.4 2.6.9 3.5z"></path></svg></span>Heat &amp; Power</button>
+        <button id="quant-btn-equipment" type="button" role="tab" aria-controls="quant-panel-equipment" aria-selected="false" onclick="switchQuantTopic('equipment')"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path><path d="M4 12h2m12 0h2M12 4v2m0 12v2M6.3 6.3l1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4"></path></svg></span>Equipment</button>
+        <button id="quant-btn-systems" type="button" role="tab" aria-controls="quant-panel-systems" aria-selected="false" onclick="switchQuantTopic('systems')"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h9a4 4 0 1 0-4-4"></path><path d="M4 9h13a3 3 0 1 0-3-3"></path><path d="M4 21h6a2 2 0 1 1-2 2"></path></svg></span>Systems</button>
+      </div>
+
+      <div id="quant-panel-basics" class="quant-panel active" role="tabpanel" aria-labelledby="quant-btn-basics">
+        <div class="equation-library">
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span><h4>Energy</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous energy equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation2a.png" alt="Energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Energy · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation2b.png" alt="Energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Energy · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation2c.png" alt="Energy equation, step 3" loading="lazy"><figcaption class="equation-caption">Energy · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next energy equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div>
+          </article>
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg></span><h4>Cost</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous cost equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationCost1.png" alt="Energy cost equation, step 1" loading="lazy"><figcaption class="equation-caption">Cost · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationCost2.png" alt="Energy cost equation, step 2" loading="lazy"><figcaption class="equation-caption">Cost · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationCost3.png" alt="Energy cost equation, step 3" loading="lazy"><figcaption class="equation-caption">Cost · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next cost equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div>
+          </article>
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16"></path><path d="M4 12h11"></path><path d="M4 18h7"></path><path d="m17 15 3 3 3-3"></path><path d="M20 8v10"></path></svg></span><h4>Savings</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous savings equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationSavings1.png" alt="Energy savings equation, step 1" loading="lazy"><figcaption class="equation-caption">Savings · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationSavings2.png" alt="Energy savings equation, step 2" loading="lazy"><figcaption class="equation-caption">Savings · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationSavings3.png" alt="Energy savings equation, step 3" loading="lazy"><figcaption class="equation-caption">Savings · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next savings equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div>
+          </article>
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 14a8 8 0 0 1 16 0"></path><path d="M12 14l4-4"></path><path d="M7 18h10"></path></svg></span><h4>Efficiency</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous efficiency equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationEfficiency0.png" alt="Efficiency equation definition" loading="lazy"><figcaption class="equation-caption">Efficiency · Definition</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency1.png" alt="Efficiency equation, step 1" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency2.png" alt="Efficiency equation, step 2" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationEfficiency3.png" alt="Efficiency equation, step 3" loading="lazy"><figcaption class="equation-caption">Efficiency · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next efficiency equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 4</div></div>
+          </article>
+        </div>
+      </div>
+
+      <div id="quant-panel-heat-power" class="quant-panel" role="tabpanel" aria-labelledby="quant-btn-heat-power">
+        <div class="equation-library">
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 14c-1.2-3 2-5 2-8 3 2 5 5 4 8 .9-.6 1.5-1.5 2-2.5 1.5 3.5-.8 8.5-5 8.5-3.3 0-5.7-2.5-5.7-5.5 0-1.6.7-3 1.8-4 .1 1.4.4 2.6.9 3.5z"></path></svg></span><h4>Heat</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous heat equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation3a.png" alt="Sensible heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Sensible Heat (Air) · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation3b-1.png" alt="Sensible heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Sensible Heat (Air) · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_Heat_Totalair1.png" alt="Total air heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Total Heat (Air) · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_Heat_Totalair2.png" alt="Total air heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Total Heat (Air) · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation.png" alt="Total water heat equation, step 1" loading="lazy"><figcaption class="equation-caption">Total Heat (Water) · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation1a-1.png" alt="Total water heat equation, step 2" loading="lazy"><figcaption class="equation-caption">Total Heat (Water) · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next heat equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 6</div></div>
+          </article>
+          <article class="equation-card">
+            <div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span><h4>Power</h4></div>
+            <div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous power equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_Power1.png" alt="Simple power equation, step 1" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_Power2.png" alt="Simple power equation, step 2" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_Power3.png" alt="Simple power equation, step 3" loading="lazy"><figcaption class="equation-caption">Simple Power · Step 3</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle1-1.png" alt="Single-phase power equation, step 1" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle2-1.png" alt="Single-phase power equation, step 2" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle3.png" alt="Single-phase power equation, step 3" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 3</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerSingle4.png" alt="Single-phase power equation, step 4" loading="lazy"><figcaption class="equation-caption">Single Phase · Step 4</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree1.png" alt="Three-phase power equation, step 1" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree2.png" alt="Three-phase power equation, step 2" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree3.png" alt="Three-phase power equation, step 3" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 3</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_PowerThree4.png" alt="Three-phase power equation, step 4" loading="lazy"><figcaption class="equation-caption">Three Phase · Step 4</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next power equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 11</div></div>
+          </article>
+        </div>
+      </div>
+
+      <div id="quant-panel-equipment" class="quant-panel" role="tabpanel" aria-labelledby="quant-btn-equipment">
+        <div class="equation-library">
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path><path d="M4 12h2m12 0h2M12 4v2m0 12v2M6.3 6.3l1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4"></path></svg></span><h4>Motors</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous motor equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationMotors1-1.png" alt="Motor energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Motor Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationMotors2-1.png" alt="Motor energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Motor Equation · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next motor equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div></article>
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 14c-1.2-3 2-5 2-8 3 2 5 5 4 8 .9-.6 1.5-1.5 2-2.5 1.5 3.5-.8 8.5-5 8.5-3.3 0-5.7-2.5-5.7-5.5 0-1.6.7-3 1.8-4 .1 1.4.4 2.6.9 3.5z"></path></svg></span><h4>Boilers</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous boiler equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/EquationBoiler1.png" alt="Boiler energy equation, step 1" loading="lazy"><figcaption class="equation-caption">Boiler Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/EquationBoiler2.png" alt="Boiler energy equation, step 2" loading="lazy"><figcaption class="equation-caption">Boiler Equation · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next boiler equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div></article>
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M5 5l14 14"></path><path d="M19 5 5 19"></path><path d="M2 12h20"></path></svg></span><h4>Chillers</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous chiller equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_COP1.png" alt="Chiller coefficient of performance equation, step 1" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_COP2.png" alt="Chiller coefficient of performance equation, step 2" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_COP3.png" alt="Chiller coefficient of performance equation, step 3" loading="lazy"><figcaption class="equation-caption">COP Equation · Step 3</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next chiller equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div></article>
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11z"></path></svg></span><h4>Water</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous water equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_Water1.png" alt="Water leak waste equation, step 1" loading="lazy"><figcaption class="equation-caption">Leak Waste · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_water2.png" alt="Water leak waste equation, step 2" loading="lazy"><figcaption class="equation-caption">Leak Waste · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next water equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 2</div></div></article>
+        </div>
+      </div>
+
+      <div id="quant-panel-systems" class="quant-panel" role="tabpanel" aria-labelledby="quant-btn-systems">
+        <div class="equation-library">
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h9a4 4 0 1 0-4-4"></path><path d="M4 9h13a3 3 0 1 0-3-3"></path><path d="M4 21h6a2 2 0 1 1-2 2"></path></svg></span><h4>AHU</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous AHU equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_leakby1.png" alt="AHU coil leak-by equation, step 1" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_leakby2.png" alt="AHU coil leak-by equation, step 2" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 2</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_leakby3.png" alt="AHU coil leak-by equation, step 3" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Step 3</figcaption></figure><figure class="equation-slide diagram-slide"><img src="/assets/images/diagrams/coil-leak-by.png" alt="AHU heating and cooling coil leak-by diagram" loading="lazy"><figcaption class="equation-caption">Coil Leak-by · Diagram</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_AHU1.png" alt="AHU mixed-air equation, step 1" loading="lazy"><figcaption class="equation-caption">Mixed Air · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_AHU2.png" alt="AHU mixed-air equation, step 2" loading="lazy"><figcaption class="equation-caption">Mixed Air · Step 2</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next AHU equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 6</div></div></article>
+          <article class="equation-card"><div class="equation-card-header"><span class="equation-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v16"></path><path d="M8 8h2m4 0h2M8 12h2m4 0h2M8 16h2m4 0h2"></path></svg></span><h4>Whole Building HVAC</h4></div><div class="equation-carousel" data-index="0"><div class="equation-viewport"><button class="equation-control previous" type="button" onclick="moveEquationSlide(this, -1)" aria-label="Previous whole-building equation">&#8249;</button><figure class="equation-slide active"><img src="/assets/images/equations/Equation_HVAC1-1.png" alt="Comprehensive HVAC equation, step 1" loading="lazy"><figcaption class="equation-caption">Energy Consumption &amp; Savings · Step 1</figcaption></figure><figure class="equation-slide"><img src="/assets/images/equations/Equation_HVAC2-1.png" alt="Comprehensive HVAC equation, step 2" loading="lazy"><figcaption class="equation-caption">Energy Consumption &amp; Savings · Step 2</figcaption></figure><figure class="equation-slide diagram-slide"><img src="/assets/images/diagrams/hvac-energy-flow.png" alt="HVAC energy flow through heating, cooling, and fan systems" loading="lazy"><figcaption class="equation-caption">Comprehensive HVAC · Diagram</figcaption></figure><button class="equation-control next" type="button" onclick="moveEquationSlide(this, 1)" aria-label="Next whole-building equation">&#8250;</button></div><div class="equation-status" aria-live="polite">1 of 3</div></div></article>
+        </div>
       </div>
     </section>
   </div>
@@ -1181,6 +1233,17 @@ function switchTab(id) {
   });
 }
 document.addEventListener('DOMContentLoaded', () => switchTab('basics'));
+
+function switchQuantTopic(id) {
+  ['basics', 'heat-power', 'equipment', 'systems'].forEach(t => {
+    const panel = document.getElementById('quant-panel-' + t);
+    const button = document.getElementById('quant-btn-' + t);
+    const active = t === id;
+    panel.classList.toggle('active', active);
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+}
 
 let ecmSlide = 0;
 
