@@ -838,9 +838,219 @@ title: James Bell-Torres
     margin-top: 2rem;
   }
 
+  .tool-workspace {
+    margin-top: 2rem;
+  }
+
+  .tool-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--gray-300);
+  }
+
+  .tool-tab {
+    appearance: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 0.8rem 0.9rem;
+    color: var(--gray-600);
+    background: transparent;
+    cursor: pointer;
+    font: 800 0.95rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .tool-tab.active {
+    border-bottom-color: var(--teal);
+    color: var(--primary-color);
+  }
+
+  .tool-panel {
+    display: none;
+  }
+
+  .tool-panel.active {
+    display: block;
+  }
+
+  .tool-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-equations {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .tool-equations.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tool-equations img,
+  .tool-diagram img {
+    display: block;
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    padding: 0.75rem;
+    border: 0.5px solid #e0e0e0;
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .tool-diagram img {
+    height: 180px;
+  }
+
+  .tool-form {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .tool-section {
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--gray-300);
+  }
+
+  .tool-section h4 {
+    margin: 0 0 0.85rem;
+    color: var(--primary-color);
+    font: 800 1rem/1.25 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .tool-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .control-grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .control-grid.single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .range-value,
+  .derived-value {
+    color: var(--gray-600);
+    font: 700 0.9rem/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .derived-value {
+    display: block;
+    padding: 0.7rem;
+    border: 0.5px solid #d4d8dc;
+    border-radius: 8px;
+    background: var(--gray-100);
+  }
+
+  .weekday-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.8rem;
+    margin-top: 0.3rem;
+    font: 700 0.88rem/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .weekday-row label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: inherit;
+  }
+
+  .weekday-row input {
+    width: auto;
+  }
+
+  .result-panel {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .result-panel.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .result-panel.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-card {
+    border: 0.5px solid #e0e0e0;
+    border-radius: var(--radius);
+    padding: 1rem;
+    background: var(--white);
+  }
+
+  .metric-label {
+    display: block;
+    color: var(--gray-700);
+    font: 800 0.82rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .metric-value {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--primary-color);
+    font: 800 1.45rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .metric-sub {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--gray-600);
+    font: 700 0.82rem/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .mini-bars {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+  }
+
+  .mini-bar {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 0.45rem;
+    align-items: center;
+    color: var(--gray-600);
+    font: 700 0.75rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .mini-bar span:last-child {
+    height: 0.55rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal) var(--bar-width, 0%), var(--gray-200) 0);
+  }
+
   @media (max-width: 980px) {
-    .savings-grid {
+    .savings-grid,
+    .result-panel {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tool-intro,
+    .tool-columns,
+    .control-grid.three {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -872,7 +1082,13 @@ title: James Bell-Torres
     .strategy-grid,
     .result-grid,
     .field-grid,
-    .savings-grid {
+    .savings-grid,
+    .tool-equations,
+    .tool-equations.three,
+    .result-panel,
+    .result-panel.three,
+    .result-panel.two,
+    .control-grid {
       grid-template-columns: 1fr;
     }
 
@@ -964,7 +1180,8 @@ title: James Bell-Torres
     }
 
     body,
-    input {
+    input,
+    .derived-value {
       background: var(--white);
       color: var(--neutral-dark);
     }
@@ -984,14 +1201,18 @@ title: James Bell-Torres
     .tool-card,
     .calculator,
     .result-card,
+    .metric-card,
     .ecm-card,
     .equation-card {
       background: #1b202b;
       border-color: #3b4454;
     }
 
-    .quant-topic-tabs {
+    .quant-topic-tabs,
+    .tool-tabs,
+    .tool-section {
       border-bottom-color: #3b4454;
+      border-top-color: #3b4454;
     }
 
     .equation-icon {
@@ -1377,40 +1598,291 @@ title: James Bell-Torres
 <section class="section alt" id="tools">
   <div class="container">
     <h2>Tools</h2>
-    <div class="calculator-grid">
-      <form class="calculator" id="savings-calculator">
-        <h3>Energy savings calculator</h3>
-        <div class="field-grid">
-          <label for="ahu-count">Number of AHUs
-            <input id="ahu-count" name="ahu-count" type="number" min="0" step="1" value="4">
-          </label>
-          <label for="kw-per-ahu">Average kW per AHU
-            <input id="kw-per-ahu" name="kw-per-ahu" type="number" min="0" step="0.1" value="12">
-          </label>
-          <label for="hours-saved">Hours saved per day
-            <input id="hours-saved" name="hours-saved" type="number" min="0" step="0.25" value="2">
-          </label>
-          <label for="energy-rate">Energy rate ($/kWh)
-            <input id="energy-rate" name="energy-rate" type="number" min="0" step="0.01" value="0.22">
-          </label>
-        </div>
-        <p class="footnote">Assumes 250 operating days/year</p>
-      </form>
-      <div class="result-grid" aria-live="polite">
-        <div class="result-card">
-          <strong id="annual-kwh">24,000</strong>
-          <p>annual kWh saved</p>
-        </div>
-        <div class="result-card">
-          <strong id="annual-dollars">$5,280</strong>
-          <p>estimated dollars saved per year</p>
-        </div>
-        <div class="result-card">
-          <strong id="annual-co2">9</strong>
-          <p>metric tons CO2 avoided</p>
-        </div>
+    <p class="narrow">Quick calculators for common building energy and water savings opportunities, rebuilt from the original BuildingEnergyTools formulas with lightweight static-site controls.</p>
+
+    <div class="tool-workspace">
+      <div class="tool-tabs" role="tablist" aria-label="Building energy calculators">
+        <button id="tool-tab-motors" class="tool-tab active" type="button" role="tab" aria-controls="tool-panel-motors" aria-selected="true" onclick="switchToolTab('motors')">Motors</button>
+        <button id="tool-tab-water" class="tool-tab" type="button" role="tab" aria-controls="tool-panel-water" aria-selected="false" onclick="switchToolTab('water')">Water</button>
+        <button id="tool-tab-ahu" class="tool-tab" type="button" role="tab" aria-controls="tool-panel-ahu" aria-selected="false" onclick="switchToolTab('ahu')">AHU Leak-by</button>
       </div>
+
+      <section id="tool-panel-motors" class="tool-panel active" role="tabpanel" aria-labelledby="tool-tab-motors">
+        <div class="tool-intro">
+          <div>
+            <h3>Motors quick calculation</h3>
+            <p>Compare pre and post fan motor energy from horsepower, speed, efficiency, rate, and operating schedule.</p>
+          </div>
+          <div class="tool-equations">
+            <img src="/assets/images/equations/EquationMotors1-1.png" alt="Motor energy equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/EquationMotors2-1.png" alt="Motor energy equation, step 2" loading="lazy">
+          </div>
+        </div>
+
+        <div class="tool-form" data-calculator="motors">
+          <div class="tool-section">
+            <h4>Shared assumptions</h4>
+            <div class="control-grid three">
+              <label for="motors-implementation-cost">Implementation cost ($)
+                <input id="motors-implementation-cost" type="number" min="0" max="1000000" step="1000" value="50000">
+              </label>
+              <label for="motors-electricity-rate">Electricity rate ($/kWh)
+                <input id="motors-electricity-rate" type="number" min="0" max="1" step="0.01" value="0.18">
+              </label>
+              <span class="derived-value">CO2 factor: 0.000707 metric tons/kWh</span>
+            </div>
+          </div>
+
+          <div class="tool-columns">
+            <div class="tool-section">
+              <h4>Pre condition</h4>
+              <div class="control-grid">
+                <label for="motors-pre-hp">Combined fan rated power (HP)
+                  <input id="motors-pre-hp" type="number" min="0" max="1000" step="1" value="30">
+                </label>
+                <label for="motors-pre-speed">Average VFD speed
+                  <input id="motors-pre-speed" type="range" min="0" max="100" step="1" value="80">
+                  <span class="range-value" id="motors-pre-speed-value">80%</span>
+                </label>
+                <label for="motors-pre-efficiency">Average system efficiency
+                  <input id="motors-pre-efficiency" type="range" min="1" max="100" step="1" value="72">
+                  <span class="range-value" id="motors-pre-efficiency-value">72%</span>
+                </label>
+                <label for="motors-pre-start">Occupied start time
+                  <input id="motors-pre-start" type="number" min="0" max="2400" step="100" value="300">
+                </label>
+                <label for="motors-pre-end">Occupied end time
+                  <input id="motors-pre-end" type="number" min="0" max="2400" step="100" value="2000">
+                </label>
+                <span class="derived-value">Runtime: <span id="motors-pre-runtime">4,432 hours</span></span>
+              </div>
+              <div class="weekday-row" aria-label="Pre occupied days">
+                <label><input type="checkbox" class="motors-pre-day" checked>mo</label>
+                <label><input type="checkbox" class="motors-pre-day" checked>tu</label>
+                <label><input type="checkbox" class="motors-pre-day" checked>wed</label>
+                <label><input type="checkbox" class="motors-pre-day" checked>thur</label>
+                <label><input type="checkbox" class="motors-pre-day" checked>fri</label>
+                <label><input type="checkbox" class="motors-pre-day">sat</label>
+                <label><input type="checkbox" class="motors-pre-day">sun</label>
+              </div>
+            </div>
+
+            <div class="tool-section">
+              <h4>Post condition</h4>
+              <div class="control-grid">
+                <label for="motors-post-hp">Combined fan rated power (HP)
+                  <input id="motors-post-hp" type="number" min="0" max="1000" step="1" value="30">
+                </label>
+                <label for="motors-post-speed">Average VFD speed
+                  <input id="motors-post-speed" type="range" min="0" max="100" step="1" value="80">
+                  <span class="range-value" id="motors-post-speed-value">80%</span>
+                </label>
+                <label for="motors-post-efficiency">System efficiency
+                  <input id="motors-post-efficiency" type="range" min="1" max="100" step="1" value="72">
+                  <span class="range-value" id="motors-post-efficiency-value">72%</span>
+                </label>
+                <label for="motors-post-start">Occupied start time
+                  <input id="motors-post-start" type="number" min="0" max="2400" step="100" value="700">
+                </label>
+                <label for="motors-post-end">Occupied end time
+                  <input id="motors-post-end" type="number" min="0" max="2400" step="100" value="1500">
+                </label>
+                <span class="derived-value">Runtime: <span id="motors-post-runtime">2,086 hours</span></span>
+              </div>
+              <div class="weekday-row" aria-label="Post occupied days">
+                <label><input type="checkbox" class="motors-post-day" checked>mo</label>
+                <label><input type="checkbox" class="motors-post-day" checked>tu</label>
+                <label><input type="checkbox" class="motors-post-day" checked>wed</label>
+                <label><input type="checkbox" class="motors-post-day" checked>thur</label>
+                <label><input type="checkbox" class="motors-post-day" checked>fri</label>
+                <label><input type="checkbox" class="motors-post-day">sat</label>
+                <label><input type="checkbox" class="motors-post-day">sun</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-panel" aria-live="polite">
+          <div class="metric-card">
+            <span class="metric-label">Energy</span>
+            <span class="metric-value"><span id="motors-kwh-saved">37,336</span> kWh</span>
+            <span class="metric-sub"><span id="motors-kwh-percent">53</span>% reduction</span>
+            <div class="mini-bars">
+              <div class="mini-bar"><span>Pre</span><span id="motors-pre-kwh-bar"></span></div>
+              <div class="mini-bar"><span>Post</span><span id="motors-post-kwh-bar"></span></div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Cost</span>
+            <span class="metric-value" id="motors-cost-saved">$6,720</span>
+            <span class="metric-sub"><span id="motors-cost-percent">53</span>% reduction</span>
+            <div class="mini-bars">
+              <div class="mini-bar"><span>Pre</span><span id="motors-pre-cost-bar"></span></div>
+              <div class="mini-bar"><span>Post</span><span id="motors-post-cost-bar"></span></div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">CO2</span>
+            <span class="metric-value"><span id="motors-co2-saved">27</span> metric tons</span>
+            <span class="metric-sub"><span id="motors-co2-percent">54</span>% reduction</span>
+            <div class="mini-bars">
+              <div class="mini-bar"><span>Pre</span><span id="motors-pre-co2-bar"></span></div>
+              <div class="mini-bar"><span>Post</span><span id="motors-post-co2-bar"></span></div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Payback</span>
+            <span class="metric-value"><span id="motors-payback">7.4</span> years</span>
+            <span class="metric-sub">implementation cost / annual savings</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="tool-panel-water" class="tool-panel" role="tabpanel" aria-labelledby="tool-tab-water">
+        <div class="tool-intro">
+          <div>
+            <h3>Water leak waste calculation</h3>
+            <p>Estimate annual water loss and cost from a continuous leak or waste flow rate.</p>
+          </div>
+          <div class="tool-equations">
+            <img src="/assets/images/equations/Equation_Water1.png" alt="Water leak waste equation, step 1" loading="lazy">
+            <img src="/assets/images/equations/Equation_water2.png" alt="Water leak waste equation, step 2" loading="lazy">
+          </div>
+        </div>
+
+        <div class="tool-form" data-calculator="water">
+          <div class="tool-section">
+            <h4>Assumptions</h4>
+            <div class="control-grid three">
+              <label for="water-supply-rate">Supply rate ($/ccf)
+                <input id="water-supply-rate" type="number" min="0" step="0.01" value="8.00">
+                <span class="range-value" id="water-supply-gal">$0.011/gal</span>
+              </label>
+              <label for="water-waste-rate">Waste rate ($/ccf)
+                <input id="water-waste-rate" type="number" min="0" step="0.01" value="10">
+                <span class="range-value" id="water-waste-gal">$0.013/gal</span>
+              </label>
+              <span class="derived-value">Total rate: <span id="water-total-rate">$18/ccf</span><br><span id="water-total-gal">$0.024/gal</span></span>
+            </div>
+          </div>
+          <div class="tool-section">
+            <h4>Variables</h4>
+            <div class="control-grid single">
+              <label for="water-flow-rate">Leak or waste flow rate
+                <input id="water-flow-rate" type="range" min="0" max="50" step="1" value="5">
+                <span class="range-value" id="water-flow-rate-value">5 gpm</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-panel two" aria-live="polite">
+          <div class="metric-card">
+            <span class="metric-label">Annual water loss</span>
+            <span class="metric-value"><span id="water-annual-loss">2,628,000</span> gal</span>
+            <span class="metric-sub">flow x 60 x 8,760</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Annual water cost</span>
+            <span class="metric-value" id="water-annual-cost">$63,072</span>
+            <span class="metric-sub">annual loss x rounded $/gal</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="tool-panel-ahu" class="tool-panel" role="tabpanel" aria-labelledby="tool-tab-ahu">
+        <div class="tool-intro">
+          <div>
+            <h3>AHU coil leak-by quick calculation</h3>
+            <p>Estimate energy savings from repairing a coil valve that leaks when it should be closed.</p>
+          </div>
+          <div class="tool-diagram">
+            <img src="/assets/images/diagrams/coil-leak-by.png" alt="AHU heating and cooling coil leak-by diagram" loading="lazy">
+          </div>
+        </div>
+        <div class="tool-equations three">
+          <img src="/assets/images/equations/Equation_leakby1.png" alt="AHU coil leak-by equation, step 1" loading="lazy">
+          <img src="/assets/images/equations/Equation_leakby2.png" alt="AHU coil leak-by equation, step 2" loading="lazy">
+          <img src="/assets/images/equations/Equation_leakby3.png" alt="AHU coil leak-by equation, step 3" loading="lazy">
+        </div>
+
+        <div class="tool-form" data-calculator="ahu">
+          <div class="tool-section">
+            <h4>Assumptions</h4>
+            <div class="control-grid three">
+              <label for="ahu-max-cfm">Max AHU capacity (CFM)
+                <input id="ahu-max-cfm" type="number" min="0" max="200000" step="1000" value="60000">
+              </label>
+              <label for="ahu-vfd-speed">Average VFD speed
+                <input id="ahu-vfd-speed" type="range" min="0" max="100" step="1" value="80">
+                <span class="range-value" id="ahu-vfd-speed-value">80%</span>
+              </label>
+              <label for="ahu-electricity-rate">Electricity rate ($/kWh)
+                <input id="ahu-electricity-rate" type="number" min="0" max="1" step="0.01" value="0.18">
+              </label>
+              <label for="ahu-fan-heat">Fan heat gain (F)
+                <input id="ahu-fan-heat" type="number" step="0.1" value="2">
+              </label>
+              <span class="derived-value">Air flow: <span id="ahu-airflow">48,000 CFM</span></span>
+              <span class="derived-value">CO2 factor: 0.000707 metric tons/kWh</span>
+            </div>
+          </div>
+          <div class="tool-section">
+            <h4>Variables</h4>
+            <div class="control-grid three">
+              <label for="ahu-before-temp">Before coil temp (F)
+                <input id="ahu-before-temp" type="number" step="0.1" value="65">
+              </label>
+              <label for="ahu-after-temp">After coil temp (F)
+                <input id="ahu-after-temp" type="number" step="0.1" value="62">
+              </label>
+              <span class="derived-value">&Delta;T: <span id="ahu-delta-t">5.0 F</span></span>
+              <label for="ahu-start">Scheduled AHU start time
+                <input id="ahu-start" type="number" min="0" max="2400" step="100" value="300">
+              </label>
+              <label for="ahu-end">Scheduled AHU end time
+                <input id="ahu-end" type="number" min="0" max="2400" step="100" value="2000">
+              </label>
+              <span class="derived-value">Scheduled runtime: <span id="ahu-scheduled-runtime">4,432 hours</span></span>
+              <label for="ahu-valve-active">Runtime valve not at 0%
+                <input id="ahu-valve-active" type="range" min="0" max="100" step="1" value="20">
+                <span class="range-value" id="ahu-valve-active-value">20%</span>
+              </label>
+              <span class="derived-value">Runtime valve not leaking-by: <span id="ahu-valve-runtime">1,752 hours</span></span>
+              <span class="derived-value">Annual leak-by runtime: <span id="ahu-leak-runtime">2,680 hours</span></span>
+            </div>
+            <div class="weekday-row" aria-label="Scheduled AHU days">
+              <label><input type="checkbox" class="ahu-day" checked>mo</label>
+              <label><input type="checkbox" class="ahu-day" checked>tu</label>
+              <label><input type="checkbox" class="ahu-day" checked>wed</label>
+              <label><input type="checkbox" class="ahu-day" checked>thur</label>
+              <label><input type="checkbox" class="ahu-day" checked>fri</label>
+              <label><input type="checkbox" class="ahu-day">sat</label>
+              <label><input type="checkbox" class="ahu-day">sun</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-panel three" aria-live="polite">
+          <div class="metric-card">
+            <span class="metric-label">Energy savings</span>
+            <span class="metric-value"><span id="ahu-kwh-saved">203,584</span> kWh</span>
+            <span class="metric-sub">repair savings estimate</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Cost savings</span>
+            <span class="metric-value" id="ahu-cost-saved">$36,645</span>
+            <span class="metric-sub">annual electricity savings</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">CO2 savings</span>
+            <span class="metric-value"><span id="ahu-co2-saved">144</span> metric tons</span>
+            <span class="metric-sub">annual avoided emissions</span>
+          </div>
+        </div>
+      </section>
     </div>
+
     <div class="tools-grid">
       <article class="tool-card">
         <h3>Equation reference</h3>
@@ -1452,6 +1924,17 @@ function switchQuantTopic(id) {
   ['basics', 'heat-power', 'equipment', 'systems'].forEach(t => {
     const panel = document.getElementById('quant-panel-' + t);
     const button = document.getElementById('quant-btn-' + t);
+    const active = t === id;
+    panel.classList.toggle('active', active);
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+}
+
+function switchToolTab(id) {
+  ['motors', 'water', 'ahu'].forEach(t => {
+    const panel = document.getElementById('tool-panel-' + t);
+    const button = document.getElementById('tool-tab-' + t);
     const active = t === id;
     panel.classList.toggle('active', active);
     button.classList.toggle('active', active);
@@ -1516,25 +1999,160 @@ const currencyFormat = new Intl.NumberFormat('en-US', {
   currency: 'USD',
   maximumFractionDigits: 0
 });
+const oneDecimalFormat = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1
+});
+const threeDecimalCurrencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 3,
+  maximumFractionDigits: 3
+});
+const CO2_FACTOR = 0.000707;
 
 function readNumber(id) {
   return Number(document.getElementById(id).value) || 0;
 }
 
-function updateCalculator() {
-  const annualKwh = readNumber('ahu-count') * readNumber('kw-per-ahu') * readNumber('hours-saved') * 250;
-  const dollars = annualKwh * readNumber('energy-rate');
-  const co2 = annualKwh * 0.000386;
+function writeText(id, value) {
+  const element = document.getElementById(id);
+  if (element) element.textContent = value;
+}
 
-  document.getElementById('annual-kwh').textContent = numberFormat.format(Math.round(annualKwh));
-  document.getElementById('annual-dollars').textContent = currencyFormat.format(Math.round(dollars));
-  document.getElementById('annual-co2').textContent = numberFormat.format(Math.round(co2));
+function updatePercentLabel(id, value) {
+  writeText(id, Math.round(value));
+}
+
+function readPercent(id) {
+  return readNumber(id) / 100;
+}
+
+function countChecked(selector) {
+  return document.querySelectorAll(selector + ':checked').length;
+}
+
+function calculateRuntime(startId, endId, daySelector) {
+  const span = Math.max(0, readNumber(endId) - readNumber(startId));
+  return Math.round((span / 100) * (52.143 * countChecked(daySelector)));
+}
+
+function setRangeLabel(id, suffix) {
+  writeText(id + '-value', readNumber(id) + suffix);
+}
+
+function setBar(id, value, max) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  const width = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
+  element.style.setProperty('--bar-width', width + '%');
+}
+
+function safeReduction(pre, post) {
+  return pre > 0 ? ((pre - post) / pre) * 100 : 0;
+}
+
+function updateMotorsCalculator() {
+  setRangeLabel('motors-pre-speed', '%');
+  setRangeLabel('motors-post-speed', '%');
+  setRangeLabel('motors-pre-efficiency', '%');
+  setRangeLabel('motors-post-efficiency', '%');
+
+  const rate = readNumber('motors-electricity-rate');
+  const preRuntime = calculateRuntime('motors-pre-start', 'motors-pre-end', '.motors-pre-day');
+  const postRuntime = calculateRuntime('motors-post-start', 'motors-post-end', '.motors-post-day');
+  const preEfficiency = Math.max(0.01, readPercent('motors-pre-efficiency'));
+  const postEfficiency = Math.max(0.01, readPercent('motors-post-efficiency'));
+  const preKwh = Math.round(readNumber('motors-pre-hp') * 0.746 * preRuntime * (1 / preEfficiency) * Math.pow(readPercent('motors-pre-speed'), 3));
+  const postKwh = Math.round(readNumber('motors-post-hp') * 0.746 * postRuntime * (1 / postEfficiency) * Math.pow(readPercent('motors-post-speed'), 3));
+  const preCost = Math.round(preKwh * rate);
+  const postCost = Math.round(postKwh * rate);
+  const preCo2 = Math.round(preKwh * CO2_FACTOR);
+  const postCo2 = Math.round(postKwh * CO2_FACTOR);
+  const kwhSaved = preKwh - postKwh;
+  const costSaved = preCost - postCost;
+  const co2Saved = preCo2 - postCo2;
+  const payback = costSaved > 0 ? readNumber('motors-implementation-cost') / costSaved : 0;
+  const maxKwh = Math.max(preKwh, postKwh);
+  const maxCost = Math.max(preCost, postCost);
+  const maxCo2 = Math.max(preCo2, postCo2);
+
+  writeText('motors-pre-runtime', numberFormat.format(preRuntime) + ' hours');
+  writeText('motors-post-runtime', numberFormat.format(postRuntime) + ' hours');
+  writeText('motors-kwh-saved', numberFormat.format(kwhSaved));
+  writeText('motors-cost-saved', currencyFormat.format(costSaved));
+  writeText('motors-co2-saved', numberFormat.format(co2Saved));
+  writeText('motors-payback', payback > 0 ? oneDecimalFormat.format(payback) : 'N/A');
+  updatePercentLabel('motors-kwh-percent', safeReduction(preKwh, postKwh));
+  updatePercentLabel('motors-cost-percent', safeReduction(preCost, postCost));
+  updatePercentLabel('motors-co2-percent', safeReduction(preCo2, postCo2));
+  setBar('motors-pre-kwh-bar', preKwh, maxKwh);
+  setBar('motors-post-kwh-bar', postKwh, maxKwh);
+  setBar('motors-pre-cost-bar', preCost, maxCost);
+  setBar('motors-post-cost-bar', postCost, maxCost);
+  setBar('motors-pre-co2-bar', preCo2, maxCo2);
+  setBar('motors-post-co2-bar', postCo2, maxCo2);
+}
+
+function updateWaterCalculator() {
+  setRangeLabel('water-flow-rate', ' gpm');
+
+  const supplyRate = readNumber('water-supply-rate');
+  const wasteRate = readNumber('water-waste-rate');
+  const totalRate = supplyRate + wasteRate;
+  const supplyPerGal = supplyRate / 748;
+  const wastePerGal = wasteRate / 748;
+  const totalPerGal = Number((totalRate / 748).toFixed(3));
+  const annualLoss = readNumber('water-flow-rate') * 60 * 8760;
+  const annualCost = Math.round(annualLoss * totalPerGal);
+
+  writeText('water-supply-gal', threeDecimalCurrencyFormat.format(supplyPerGal) + '/gal');
+  writeText('water-waste-gal', threeDecimalCurrencyFormat.format(wastePerGal) + '/gal');
+  writeText('water-total-rate', currencyFormat.format(totalRate) + '/ccf');
+  writeText('water-total-gal', threeDecimalCurrencyFormat.format(totalPerGal) + '/gal');
+  writeText('water-annual-loss', numberFormat.format(annualLoss));
+  writeText('water-annual-cost', currencyFormat.format(annualCost));
+}
+
+function updateAhuCalculator() {
+  setRangeLabel('ahu-vfd-speed', '%');
+  setRangeLabel('ahu-valve-active', '%');
+
+  const airflow = readNumber('ahu-max-cfm') * readPercent('ahu-vfd-speed');
+  const deltaT = Math.abs((readNumber('ahu-before-temp') + readNumber('ahu-fan-heat')) - readNumber('ahu-after-temp'));
+  const scheduledRuntime = calculateRuntime('ahu-start', 'ahu-end', '.ahu-day');
+  const valveRuntime = Math.round(readPercent('ahu-valve-active') * 8760);
+  const leakRuntime = Math.max(0, scheduledRuntime - valveRuntime);
+  const kwhSaved = Math.round(1.08 * (1 / 3412.14) * airflow * deltaT * leakRuntime);
+  const costSaved = Math.round(kwhSaved * readNumber('ahu-electricity-rate'));
+  const co2Saved = Math.round(kwhSaved * CO2_FACTOR);
+
+  writeText('ahu-airflow', numberFormat.format(Math.round(airflow)) + ' CFM');
+  writeText('ahu-delta-t', oneDecimalFormat.format(deltaT) + ' F');
+  writeText('ahu-scheduled-runtime', numberFormat.format(scheduledRuntime) + ' hours');
+  writeText('ahu-valve-runtime', numberFormat.format(valveRuntime) + ' hours');
+  writeText('ahu-leak-runtime', numberFormat.format(leakRuntime) + ' hours');
+  writeText('ahu-kwh-saved', numberFormat.format(kwhSaved));
+  writeText('ahu-cost-saved', currencyFormat.format(costSaved));
+  writeText('ahu-co2-saved', numberFormat.format(co2Saved));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#savings-calculator input').forEach(input => {
-    input.addEventListener('input', updateCalculator);
+  document.querySelectorAll('[data-calculator="motors"] input').forEach(input => {
+    input.addEventListener('input', updateMotorsCalculator);
+    input.addEventListener('change', updateMotorsCalculator);
   });
-  updateCalculator();
+  document.querySelectorAll('[data-calculator="water"] input').forEach(input => {
+    input.addEventListener('input', updateWaterCalculator);
+    input.addEventListener('change', updateWaterCalculator);
+  });
+  document.querySelectorAll('[data-calculator="ahu"] input').forEach(input => {
+    input.addEventListener('input', updateAhuCalculator);
+    input.addEventListener('change', updateAhuCalculator);
+  });
+  switchToolTab('motors');
+  updateMotorsCalculator();
+  updateWaterCalculator();
+  updateAhuCalculator();
 });
 </script>
