@@ -563,18 +563,61 @@ title: James Bell-Torres
     margin-top: 1.5rem;
   }
 
-  .media-strip {
+  .career-carousel {
+    grid-column: 1 / -1;
+    margin-top: 2.5rem;
+  }
+
+  .career-carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .career-carousel-header h3 {
+    margin: 0;
+  }
+
+  .career-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .career-control {
+    display: inline-grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 0.5px solid #d4d8dc;
+    border-radius: 50%;
+    color: var(--primary-color);
+    background: var(--white);
+    cursor: pointer;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .career-track {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: 2.5rem;
   }
 
   figure {
     margin: 0;
   }
 
-  .media-strip img {
+  .career-slide {
+    display: none;
+  }
+
+  .career-slide.active {
+    display: block;
+  }
+
+  .career-slide img {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -829,8 +872,16 @@ title: James Bell-Torres
     .strategy-grid,
     .result-grid,
     .field-grid,
-    .media-strip,
     .savings-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .career-carousel-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .career-track {
       grid-template-columns: 1fr;
     }
 
@@ -1019,19 +1070,48 @@ title: James Bell-Torres
         <li>Asset work including EV chargers, fuel cells, PV solar, lighting controls, and submetering</li>
       </ul>
     </aside>
-    <div class="media-strip" style="grid-column: 1 / -1;">
-      <figure>
-        <img src="/assets/images/field/solar-pv-troubleshooting.jpg" alt="James Bell-Torres troubleshooting a rooftop solar photovoltaic array" loading="lazy">
-        <figcaption>Troubleshooting a photovoltaic ground fault</figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/images/field/existing-building-commissioning-cohort.jpg" alt="Existing Building Commissioning cohort on a commercial rooftop" loading="lazy">
-        <figcaption>Existing Building Commissioning cohort</figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/images/field/sling-hygrometer-fieldwork.jpg" alt="James Bell-Torres taking a field measurement with a sling hygrometer" loading="lazy">
-        <figcaption>Field measurement with a sling hygrometer</figcaption>
-      </figure>
+    <div class="career-carousel">
+      <div class="career-carousel-header">
+        <h3>Various Career Adventures</h3>
+        <div class="career-controls">
+          <button class="career-control" type="button" onclick="moveCareerSlide(-1)" aria-label="Previous career photos">&#8249;</button>
+          <button class="career-control" type="button" onclick="moveCareerSlide(1)" aria-label="Next career photos">&#8250;</button>
+        </div>
+      </div>
+      <div class="career-track" aria-live="polite">
+        <figure class="career-slide active">
+          <img src="/assets/images/field/national-grid-rooftop.jpg" alt="National Grid Graduate Development Program on top of the Hyatt in New York" loading="lazy">
+          <figcaption>National Grid Graduate Development Program on top of the Hyatt in New York</figcaption>
+        </figure>
+        <figure class="career-slide active">
+          <img src="/assets/images/field/solar-pv-troubleshooting.jpg" alt="Troubleshooting PV ground fault" loading="lazy">
+          <figcaption>Troubleshooting PV ground fault</figcaption>
+        </figure>
+        <figure class="career-slide active">
+          <img src="/assets/images/field/wind-farm-tour.png" alt="Wind farm tour" loading="lazy">
+          <figcaption>Wind farm tour</figcaption>
+        </figure>
+        <figure class="career-slide">
+          <img src="/assets/images/field/existing-building-commissioning-cohort.jpg" alt="PG&E's Existing Building Commissioning cohort" loading="lazy">
+          <figcaption>PG&amp;E's Existing Building Commissioning cohort</figcaption>
+        </figure>
+        <figure class="career-slide">
+          <img src="/assets/images/field/sling-hygrometer-fieldwork.jpg" alt="Having fun using the sling hygrometer" loading="lazy">
+          <figcaption>Having fun using the sling hygrometer</figcaption>
+        </figure>
+        <figure class="career-slide">
+          <img src="/assets/images/field/solar-pv-tour-dorchester.jpg" alt="Leading a solar PV tour in Dorchester, MA" loading="lazy">
+          <figcaption>Leading a solar PV tour in Dorchester, MA</figcaption>
+        </figure>
+        <figure class="career-slide">
+          <img src="/assets/images/field/tank-boston.jpg" alt="On top of the Tank! Boston, MA" loading="lazy">
+          <figcaption>On top of the Tank! Boston, MA</figcaption>
+        </figure>
+        <figure class="career-slide">
+          <img src="/assets/images/field/first-engineering-office-day.jpg" alt="First day in the engineering office" loading="lazy">
+          <figcaption>First day in the engineering office</figcaption>
+        </figure>
+      </div>
     </div>
     <div class="savings-showcase">
       <h3>Annual Savings To-Date</h3>
@@ -1381,6 +1461,24 @@ function switchQuantTopic(id) {
 }
 
 let ecmSlide = 0;
+let careerSlide = 0;
+
+function showCareerSlide(index) {
+  const slides = document.querySelectorAll('.career-slide');
+  const visibleCount = 3;
+  if (!slides.length) return;
+  careerSlide = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => {
+    const offset = (i - careerSlide + slides.length) % slides.length;
+    slide.classList.toggle('active', offset < visibleCount);
+  });
+}
+
+function moveCareerSlide(direction) {
+  showCareerSlide(careerSlide + direction);
+}
+
+document.addEventListener('DOMContentLoaded', () => showCareerSlide(0));
 
 function showEcmSlide(index) {
   const slides = document.querySelectorAll('.carousel-slide');
