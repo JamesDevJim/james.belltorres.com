@@ -76,5 +76,4 @@ Content intentionally omitted:
 
 Known TODOs:
 
-- Add James Bell-Torres' exact LinkedIn URL in `index.html`; it was not discoverable in the selected Staatic files or reference repo.
 - The selected Staatic home page did not expose exact numeric end-use percentages for HVAC, lighting, or plug loads, so the page uses only the available end-use/opportunity labels.
