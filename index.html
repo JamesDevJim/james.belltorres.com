@@ -563,24 +563,18 @@ title: James Bell-Torres
     margin-top: 1.5rem;
   }
 
-  .media-strip,
-  .stock-grid {
+  .media-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-top: 2.5rem;
   }
 
-  .stock-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   figure {
     margin: 0;
   }
 
-  .media-strip img,
-  .stock-grid img {
+  .media-strip img {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -592,6 +586,49 @@ title: James Bell-Torres
     margin-top: 0.55rem;
     color: var(--gray-600);
     font: 600 0.82rem/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .savings-showcase {
+    grid-column: 1 / -1;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 8px solid #111;
+    text-align: center;
+  }
+
+  .savings-showcase h3 {
+    margin-bottom: 2.5rem;
+    color: var(--gray-700);
+    font-size: 2.1rem;
+    text-transform: uppercase;
+  }
+
+  .savings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .savings-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .savings-value {
+    display: block;
+    margin-top: 1.25rem;
+    color: #444;
+    font: 800 2.55rem/1.05 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .savings-unit {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--gray-700);
+    font: 600 1rem/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
   .diagram {
@@ -758,6 +795,12 @@ title: James Bell-Torres
     margin-top: 2rem;
   }
 
+  @media (max-width: 980px) {
+    .savings-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 760px) {
     h1 {
       font-size: 2.45rem;
@@ -787,8 +830,22 @@ title: James Bell-Torres
     .result-grid,
     .field-grid,
     .media-strip,
-    .stock-grid {
+    .savings-grid {
       grid-template-columns: 1fr;
+    }
+
+    .savings-showcase {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
+
+    .savings-showcase h3 {
+      font-size: 1.55rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .savings-value {
+      font-size: 2.2rem;
     }
 
     .ecm-grid {
@@ -895,6 +952,14 @@ title: James Bell-Torres
       background: linear-gradient(135deg, rgba(44, 95, 124, 0.35), rgba(244, 162, 97, 0.16));
     }
 
+    .savings-showcase {
+      border-top-color: #d7dee7;
+    }
+
+    .savings-value {
+      color: #f1f4f7;
+    }
+
     .btn.primary {
       background: #79B8D8;
       color: #10151d;
@@ -968,6 +1033,31 @@ title: James Bell-Torres
         <figcaption>Field measurement with a sling hygrometer</figcaption>
       </figure>
     </div>
+    <div class="savings-showcase">
+      <h3>Annual Savings To-Date</h3>
+      <div class="savings-grid">
+        <figure>
+          <img src="/assets/images/stock/efficient-lighting.jpg" alt="Energy-efficient light bulb" loading="lazy">
+          <span class="savings-value">64.6</span>
+          <span class="savings-unit">gWh</span>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/building-equipment.jpg" alt="Building equipment representing natural gas savings" loading="lazy">
+          <span class="savings-value">1,500,000</span>
+          <span class="savings-unit">therms</span>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/water-efficiency.jpg" alt="Water flowing from a faucet" loading="lazy">
+          <span class="savings-value">185</span>
+          <span class="savings-unit">million gals</span>
+        </figure>
+        <figure>
+          <img src="/assets/images/stock/energy-costs.jpg" alt="Currency representing building operating costs" loading="lazy">
+          <span class="savings-value">$18.9</span>
+          <span class="savings-unit">million</span>
+        </figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1008,24 +1098,6 @@ title: James Bell-Torres
         </div>
       </div>
       <img class="diagram" src="/assets/images/diagrams/building-energy-flow.png" alt="Diagram showing resources entering a building and useful output, emissions, and waste leaving it" loading="lazy">
-      <div class="stock-grid">
-        <figure>
-          <img src="/assets/images/stock/efficient-lighting.jpg" alt="Energy-efficient light bulb" loading="lazy">
-          <figcaption>Lighting efficiency</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/images/stock/building-equipment.jpg" alt="Building electrical equipment and controls" loading="lazy">
-          <figcaption>Equipment and controls</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/images/stock/water-efficiency.jpg" alt="Water flowing from a faucet" loading="lazy">
-          <figcaption>Water efficiency</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/images/stock/energy-costs.jpg" alt="Currency representing building operating costs" loading="lazy">
-          <figcaption>Operating cost</figcaption>
-        </figure>
-      </div>
       <p class="footnote">Exact numeric end-use percentages for HVAC, lighting, and plug loads were not available in the selected source files.</p>
     </section>
 
